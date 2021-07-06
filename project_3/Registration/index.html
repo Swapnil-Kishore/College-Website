@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<html>
+    <head>
+    </head>
+    <body>
+              <div class="loginbox">
+                    <img src="logo.png" class="avatar">
+                        <h1>Register Here</h1> 
+                        <div id="my_msg"></div>
+                        <form method="post" >
+                            <p>Username</p>
+                            <input type="text" id="username" name="username" placeholder="Enter Username"/>
+                            <p>Email Id</p>
+                            <input type="text" id="email" name="email" placeholder="Enter Email Id"/>
+                            <button type="button" onclick="echeck()" >Register</button>
+                            <a href="#">Lost your password?</a><br>
+                            <a href="login.php">Already have an account?</a>
+                        </form>   
+        
+
+    <script>
+    function echeck()
+    {
+        var email=$("#email").val();
+        var username=$("#username").val();
+        
+
+ $.ajax({
+            url :'send_mail.php', //Which server-side page to move on
+            type:'POST',    //Enycrption methodlogy
+            data :{
+            'username' : username,   
+            'email':email,
+            },
+            dataType:'html',
+            success  :function(data)
+            {
+                $('#my_msg').html(data);
+        	}
+    	});
+    }
+    </script>
+    </body>
+</html>
